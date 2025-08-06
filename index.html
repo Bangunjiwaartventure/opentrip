@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Island Hopping Mapur - Jelajahi Petualangan Selanjutnya</title>
@@ -21,7 +20,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            height: 100vh; /* supaya terlihat tinggi dan penuh */
+            min-height: 60vh; /* supaya terlihat tinggi dan penuh */
         }
         
         .card-hover {
@@ -91,6 +90,17 @@
                     Pesan Sekarang
                 </button>
             </div>
+        </div>
+        <!-- Add inside your nav -->
+        <div class="md:hidden flex items-center">
+            <button id="mobile-menu-button" class="text-3xl text-indigo-600 focus:outline-none">&#9776;</button>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden flex-col space-y-2 mt-4">
+            <a href="#home" class="block text-gray-700 hover:text-indigo-600">Beranda</a>
+            <a href="#destinations" class="block text-gray-700 hover:text-indigo-600">Destinasi</a>
+            <a href="#packages" class="block text-gray-700 hover:text-indigo-600">Paket</a>
+            <a href="#about" class="block text-gray-700 hover:text-indigo-600">Tentang</a>
+            <a href="#contact" class="block text-gray-700 hover:text-indigo-600">Kontak</a>
         </div>
     </nav>
 
@@ -723,8 +733,8 @@
             </div>
 
             <!-- Rental Table -->
-            <div class="overflow-x-auto">
-                <table class="w-full bg-white border border-gray-200 rounded-lg">
+            <div class="overflow-x-auto w-full">
+                <table class="min-w-full bg-white border border-gray-200 rounded-lg">
                     <thead class="bg-gray-100">
                         <tr>
                             <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700 border-b">Item Name</th>
@@ -1225,6 +1235,12 @@
     </script>
 
     <script>
+    document.getElementById('mobile-menu-button').onclick = function() {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    };
+    </script>
+
+    <script>
         let rentalItems = [];
         let itemCounter = 0;
         let selectedSuggestionIndex = -1;
@@ -1434,4 +1450,3 @@
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'963c09057293fce0',t:'MTc1MzI4MjY5OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-
