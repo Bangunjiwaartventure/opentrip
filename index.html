@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Island Hopping Mapur - Jelajahi Petualangan Selanjutnya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&family=Montserrat:wght@600&family=Poppins:wght@400;600&family=Quicksand:wght@400;600&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h1, h2 {
+            font-family: 'Roboto Slab', serif; /* strong headline */
+        }
+
+        .hero-gradient {
+            background-image: url('images/background.jpg'); /* pastikan sesuai dengan nama & folder gambarmu */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh; /* supaya terlihat tinggi dan penuh */
+        }
+        
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.8s ease, transform 0.8s ease;    
+        }
+        
+        section > div:not(.fade-in),
+        .card-hover:not(.fade-in) {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .destination-card {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .destination-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+            border-radius: 0.75rem;
+        }
+        
+        .search-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                   <div class="text-2xl font-bold text-indigo-600">🏝️ Bangun jiwa Artventure</div>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-indigo-600 transition duration-300">Beranda</a>
+                    <a href="#destinations" class="text-gray-700 hover:text-indigo-600 transition duration-300">Destinasi</a>
+                    <a href="#packages" class="text-gray-700 hover:text-indigo-600 transition duration-300">Paket</a>
+                    <a href="#about" class="text-gray-700 hover:text-indigo-600 transition duration-300">Tentang</a>
+                    <a href="#contact" class="text-gray-700 hover:text-indigo-600 transition duration-300">Kontak</a>
+                </div>
+                <button class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition duration-300">
+                    Pesan Sekarang
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient min-h-screen flex items-center justify-center text-white pt-16">
+        <div class="text-center max-w-4xl mx-auto px-4">
+        <div class="bg-black bg-opacity-40 backdrop-blur-sm p-6 rounded-xl">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">Discover Mapur Island</h1>
+            <p class="text-xl md:text-2xl mb-8 opacity-90">Jelajahi destinasi menakjubkan di pulau Mapur dengan pengalaman perjalanan terpilih kami</p>
+            
+            <!-- Search Bar -->
+            <div class="bg-white rounded-full p-2 max-w-2xl mx-auto shadow-2xl">
+                <div class="flex flex-col md:flex-row gap-2">
+                    <input type="text" placeholder="Kemana tujuan Anda?" class="flex-1 px-6 py-3 text-gray-700 rounded-full focus:outline-none">
+                    <input type="date" class="px-6 py-3 text-gray-700 rounded-full focus:outline-none">
+                    <button class="bg-indigo-600 text-white px-8 py-3 rounded-full hover:bg-indigo-700 transition duration-300 search-animation">
+                        🔍 Cari
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- About Section -->
+    <section id="about" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-gray-800 mb-6">About Mapur Island</h2>
+                <div class="w-24 h-1 bg-blue-500 mx-auto mb-8"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Pulau Mapur merupakan salah satu pulau indah yang terletak di Provinsi Kepulauan Riau. 
+                    Pulau ini berada di wilayah Kecamatan Bintan Pesisir, Kabupaten Bintan. 
+                    Dengan jarak lokasi sekitar 21 kilometer dari Kota Kijang tidak terlalu jauh. Pulau ini menjadi 
+                    pusat destinasi yang terkenal di Bintan yang wajib dikunjungi.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h3 class="font-display text-3xl font-semibold text-gray-800 mb-6">A Tropical Paradise</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        keindahan pulau mapur yang masih alami, serta ekosistem laut yang sangat indah, pulau ini terkenal hingga ke mancanegara. 
+                        terkenal dengan laut yang sebening kristal, pantai berpasir putih, dan hutan tropis yang rimbun.
+                        pulau ini telah menjadi destinasi favorit bagi para pelancong yang mencari relaksasi dan petualangan.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        Lokasi strategis pulau ini menjadikannya sebagai melting pot budaya, di mana pengaruh Melayu, Tionghoa,
+                        dan Indonesia berpadu harmonis, menciptakan budaya lokal yang unik dan kaya.
+                    </p>
+                </div>
+                
+                <div class="fade-in">
+                    <img src="images/airmapur.jpeg" alt="Mapur Island" class="w-full h-80 object-cover rounded-xl" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Attractions Section -->
+    <section class="py-20 bg-white px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-gray-800 mb-6">Top Attractions</h2>
+                <div class="w-24 h-1 bg-blue-500 mx-auto mb-8"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Trikora Beach -->
+                <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden fade-in">
+                    <div class="h-48 bg-gradient-to-br from-blue-400 to-blue-600 relative">
+                        <img src="images/pexels-jolodiazr-3661926.jpg" alt="Mapur Island" class="absolute inset-0 w-full h-full" viewBox="0 0 300 200">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-2xl font-semibold text-gray-800 mb-3">Penangkaran Penyu</h3>
+                        <p class="text-gray-600 mb-4">
+                            pelajari tentang upaya konservasi penyu di pulau Mapur, dan bagaimana Anda dapat berkontribusi.
+                            Kunjungi pusat penangkaran penyu dan berpartisipasi didalamnya proses pelepasan tukik ke laut.
+                        </p>
+                        <div class="flex items-center text-blue-600 font-medium">
+                            <span>wildlife experience</span>
+                            <svg class="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mangrove Tour -->
+                <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden fade-in">
+                    <div class="h-48 bg-gradient-to-br from-green-400 to-green-600 relative">
+                        <img src="images/WhatsApp Image 2025-07-23 at 6.53.50 PM.jpeg" alt="Mapur Island" class="absolute inset-0 w-full h-full" viewBox="0 0 300 200">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-2xl font-semibold text-gray-800 mb-3">Island Hopping</h3>
+                        <p class="text-gray-600 mb-4">
+                            eksplorasi pulau pulau indah disekitar mapur dengan perahu dan temukan keunikan alamnya
+                            melihat flora dan fauna lokal yang tersembunyi didalamnya.
+                        </p>
+                        <div class="flex items-center text-green-600 font-medium">
+                            <span>Eco-adventure</span>
+                            <svg class="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cultural Village -->
+                <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden fade-in">
+                    <div class="h-48 bg-gradient-to-br from-orange-400 to-red-500 relative">
+                        <img src="images/cultural.jpeg" alt="Mapur Island" class="absolute inset-0 w-full h-full" viewBox="0 0 300 200">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-2xl font-semibold text-gray-800 mb-3">Cultural Villages</h3>
+                        <p class="text-gray-600 mb-4">
+                            kunjungi desa desa tradisional Mapur dan rasakan budaya lokal yang otentik.
+                            saksikan kerajinan tradisional, cicipi masakan lokal, dan pelajari tentang warisan pulau.
+                        </p>
+                        <div class="flex items-center text-orange-600 font-medium">
+                            <span>Cultural immersion</span>
+                            <svg class="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section class="py-20 bg-gradient-to-br from-blue-50 to-indigo-100 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-gray-800 mb-6">Activities & Experiences</h2>
+                <div class="w-24 h-1 bg-blue-500 mx-auto mb-8"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-xl p-6 text-center card-hover fade-in">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        🏝️
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Island Hopping</h3>
+                    <p class="text-sm text-gray-600">jelajahi pulau di sekitar Mapur</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 text-center card-hover fade-in">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        🌊
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Snorkeling</h3>
+                    <p class="text-sm text-gray-600">berenang melihat keindahan terumbu karang yang menakjubkan</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 text-center card-hover fade-in">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        🏕️
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Camping</h3>
+                    <p class="text-sm text-gray-600">Nikmati suasana santai di pantai dengan makanan lezat</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 text-center card-hover fade-in">
+                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        🐠
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Coral Reef Conservation</h3>
+                    <p class="text-sm text-gray-600">Bermain sambil belajar pelestarian terumbu karang yang menakjubkan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section id="destinations" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Popular Destination</h2>
+                <p class="text-xl text-gray-600">jelajahi tempat-tempat paling menakjubkan di pulau Mapur</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Destination 1 -->
+                <div class="destination-card h-80 rounded-xl card-hover cursor-pointer relative overflow-hidden">
+                <!-- Background image -->
+                <img src="images/pantaibelakang3.jpeg" alt="Mapur Island" class="absolute inset-0 w-full h-full object-cover rounded-xl">
+
+                <!-- Overlay (optional) -->
+                <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl"></div>
+
+                <!-- Text content -->
+                <div class="relative h-full flex items-end p-6 z-10 text-white">
+                    <div>
+                    <h3 class="text-2xl font-bold mb-2">Pantai Belakang</h3>
+                    <p class="opacity-90">Surga tropis dengan pantai yang menakjubkan</p>
+                    <div class="mt-3">
+                        <span class="bg-white text-gray-800 px-3 py-1 rounded-full text-sm font-medium">More Information</span>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- Destination 2 -->
+                <div class="destination-card h-80 rounded-xl card-hover cursor-pointer relative overflow-hidden">
+                    <!-- Background image -->
+                    <img src="images/kepala1.jpeg" alt="Paris, France" class="absolute inset-0 w-full h-full object-cover rounded-xl">
+
+                     <!-- Optional dark overlay for better text contrast -->
+                    <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl"></div>
+
+                    <!-- Text content -->
+                    <div class="relative h-full flex items-end p-6 z-10 text-white">
+                        <div>
+                        <h3 class="text-2xl font-bold mb-2">Kepala Mapur</h3>
+                        <p class="opacity-90">Pantai dengan bentangan Rock Island yang memukau</p>
+                        <div class="mt-3">
+                            <span class="bg-white text-gray-800 px-3 py-1 rounded-full text-sm font-medium">Moer Information</span>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Destination 3 -->
+                <div class="destination-card h-80 rounded-xl card-hover cursor-pointer relative overflow-hidden">
+                    <!-- Background image -->
+                    <img src="images/sentut.jpeg" alt="Paris, France" class="absolute inset-0 w-full h-full object-cover rounded-xl">
+
+                     <!-- Optional dark overlay for better text contrast -->
+                    <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl"></div>
+
+                    <!-- Text content -->
+                    <div class="relative h-full flex items-end p-6 z-10 text-white">
+                        <div>
+                        <h3 class="text-2xl font-bold mb-2">Pantai Larang</h3>
+                        <p class="opacity-90">pantai dengan tebing yang indah didekat Pulau Larang</p>
+                        <div class="mt-3">
+                            <span class="bg-white text-gray-800 px-3 py-1 rounded-full text-sm font-medium">More Information</span>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Destination 4 -->
+                <div class="destination-card h-80 rounded-xl card-hover cursor-pointer relative overflow-hidden">
+                    <!-- Background image -->
+                    <img src="images/pulaudimapur.jpeg" alt="Paris, France" class="absolute inset-0 w-full h-full object-cover rounded-xl">
+
+                     <!-- Optional dark overlay for better text contrast -->
+                    <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl"></div>
+
+                    <!-- Text content -->
+                    <div class="relative h-full flex items-end p-6 z-10 text-white">
+                        <div>
+                        <h3 class="text-2xl font-bold mb-2">Pantai Songseng</h3>
+                        <p class="opacity-90">Spot terbaik untuk melihat flora dan fauna asli Mapur</p>
+                        <div class="mt-3">
+                            <span class="bg-white text-gray-800 px-3 py-1 rounded-full text-sm font-medium">More Information</span>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Destination 5 --> 
+                <div class="destination-card h-80 rounded-xl card-hover cursor-pointer relative overflow-hidden">
+                    <!-- Background image -->
+                    <img src="images/batubelah.jpeg" alt="Paris, France" class="absolute inset-0 w-full h-full object-cover rounded-xl">
+
+                     <!-- Optional dark overlay for better text contrast -->
+                    <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl"></div>
+
+                    <!-- Text content -->
+                    <div class="relative h-full flex items-end p-6 z-10 text-white">
+                        <div>
+                        <h3 class="text-2xl font-bold mb-2">Batu Malang Pintu/Suji</h3>
+                        <p class="opacity-90">Spot terbaik untuk berfoto dan mengabadikan momen indah</p>
+                        <div class="mt-3">
+                            <span class="bg-white text-gray-800 px-3 py-1 rounded-full text-sm font-medium">More Information</span>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Destination 6 -->
+                <div class="destination-card h-80 rounded-xl card-hover cursor-pointer relative overflow-hidden">
+                    <!-- Background image -->
+                    <img src="images/WhatsApp Image 2025-07-23 at 6.53.50 PM.jpeg" alt="Paris, France" class="absolute inset-0 w-full h-full object-cover rounded-xl">
+
+                     <!-- Optional dark overlay for better text contrast -->
+                    <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl"></div>
+
+                    <!-- Text content -->
+                    <div class="relative h-full flex items-end p-6 z-10 text-white">
+                        <div>
+                        <h3 class="text-2xl font-bold mb-2">Tour Kampung</h3>
+                        <p class="opacity-90">Mempelajari Kehidupan warga Lokal desa Mapur</p>
+                        <div class="mt-3">
+                            <span class="bg-white text-gray-800 px-3 py-1 rounded-full text-sm font-medium">More Information</span>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Packages -->
+    <section id="packages" class="font-['Poppins']">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Paket Perjalanan</h2>
+                <p class="text-xl text-gray-600">Pengalaman yang dirancang khusus untuk setiap wisatawan</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Package 1 -->
+                <div class="bg-white rounded-xl shadow-lg card-hover overflow-hidden">
+                  <div class="h-48 relative flex items-center justify-center rounded-xl overflow-hidden">
+                        <img src="images/jalansore.jpeg" alt="Paris, France" class="absolute inset-0 w-full h-full object-cover rounded-xl">
+                        <div class="text-6xl">🏔️</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">One-Day Trip Mapur Island</h3>
+                        <p class="text-gray-600 mb-4">1 hari menjelajahi keindahan pulau Mapur</p>
+                        <ul class="text-sm text-gray-600 mb-6 space-y-2">
+                            <li>📅 Recommended Trip pulau mapur, Melayani Open Trip, Private Trip Local/Mancanegara</li>
+                            <li>▫▫▫</li>
+                            <li class="font-bold mt-4">Jadwal Open Trip pulau mapur :</li>
+                            <li>▫▫▫</li>
+                            <li>📋📋📋</li>
+                            <li class="font-bold mt-4">Jalur Via Kawal (Everyday)</li>
+                            <li>▫▫▫</li>
+                            <li>💵💵💵</li>
+                            <li class="font-bold mt-4">List Harga Keperluan :</li>
+                            <li>kapal 200k pp (Minimal 10/Pax)</li>
+                            <li>guide 300k</li>
+                            <li>Snorkeling set 50k per day</li>
+                            <li>camp site (hammock, flysheet, meja+kursi) 70k per day</li>
+                            <li>air kelapa, BBQ, lunchbox, air mineral 100k</li>
+                            <li>tukik (baby seaturtle) release 30k *if available</li>
+                            <li>the ammount of total if include all the list</li>
+                            <li>$ IDR : 2.499.000</li>
+                            <li>$ RM : 1.500 RM</li>
+                            <li>$ USD : $ 375</li>
+                            <li>▫▫▫</li>
+                            <li class="font-bold mt-4">Nomor Rekening :</li>
+                            <li>» Bank BRI : -</li>
+                            <li>» Bank Mandiri : -</li>
+                            <li>» Bank BNI Syariah : -</li>
+                            <li>AN/---</li>
+                            <li>▫▫▫</li>
+                            <li>☎☎☎</li>
+                            <li class="font-bold mt-4">Informasi Pendaftaran :</li>
+                            <li>» DP Min 50%, Pelunasan Max H-7, Cancel H-14 dana Hangus</li>
+                            <li>» Whatsaap 089669300203</li>
+                            <li>» Instagram @bangunjiwa.artventure</li>
+                            <li>▫▫▫</li>
+                            <li>#bintanhopping #id_traveler #mountainesia #instapantai #pendakiindonesia #mapurisland #thisisindonesian #opentrip #tripmapur #tripmurah #malaysiahopper #singaporehopper 
+                            <li>▫▫▫</li>
+                            <li class="font-bold mt-4">Paket Sudah Termasuk :</li>
+                            <li>✅ Transportasi Bandara – Pol Damri PP</li>
+                            <li>✅ Transportasi Bus Pontianak – Nanga Pinoh PP</li>
+                            <li>✅ Transportasi Speed Boat Pelabuhan – Desa Rantau Malam PP</li>
+                            <li>✅ Transportasi Ojek Desa Rantau Malam – Kolong HP PP</li>
+                            <li>✅ Rumah Singgah</li>
+                            <li>✅ Simaksi Pendakian</li>
+                            <li>✅ Upacara Adat</li>
+                            <li>✅ Guide Profesional APGI</li>
+                            <li>✅ Porter Team</li>
+                            <li>✅ T-Shirt Pendakian</li>
+                            <li>✅ Tenda & Cooking Set</li>
+                            <li>✅ Makan Selama Pendakian</li>
+                            <li>✅ Makan Sebelum Sesudah 2x</li>
+                            <li>✅ T-Shirt Pendakian + Stiker</li>
+                            <li>✅ Tenda & Cooking</li>
+                            <li>✅ Kebersihan Basecamp</li>
+                            <li>✅ Welcome Drink</li>
+                            <li>✅ Logistik Team</li>
+                            <li>✅ First Aid Kid</li>
+                            <li>✅ Dokumentasi Kegiatan</li>
+                            <li>✅ Sertifikat Pendakian</li>
+                            <li>▫▫▫</li>
+                            <li>Paket Tidak Termasuk :</li>
+                            <li>❌ Transportasi dari kota asal</li>
+                            <li>❌ Makan Selama Perjalanan</li>
+                            <li>❌ Porter Pribadi</li>
+                            <li>❌ Perlengkapan Pribadi</li>
+                            <li>❌ Jodoh</li>
+                            <li>▫▫▫</li>
+                            <li class="font-bold mt-4">Itinerary</li>
+                            <li class="font-bold mt-4">Day 1</li>
+                            <li>09:00 – 09:30 WIB : Meeting Point di kawal</li>
+                            <li>09:30 – 10:00 WIB : Perjalanan Menuju Pulau Mapur</li>
+                            <li>10:00 – 12:00 WIB : Snorkeling di Spot Pertama</li>
+                            <li>12:00 – 13:00 WIB : Makan Siang di Pulau Mapur</li>
+                            <li>13:00 – 15:00 WIB : Snorkeling di Spot Kedua</li>
+                            <li>15:00 – 16:00 WIB : Istirahat dan Menikmati Pantai</li>
+                            <li>16:00 – 17:00 WIB : Tukik Release (Jika Tersedia)</li>
+                            <li>17:00 – 18:00 WIB : Makan Malam di Pulau Mapur</li>
+                            <li>18:00 – 19:00 WIB : Persiapan Kembali ke Kawal</li>>
+                        </ul>
+                        <div class="flex justify-between items-center">
+                            <span class="text-3xl font-bold text-indigo-600">One day Trip</span>
+                            <button class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition duration-300">
+                                Pesan Sekarang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 2 -->
+                <div class="bg-white rounded-xl shadow-lg card-hover overflow-hidden">
+                  <div class="h-48 relative flex items-center justify-center rounded-xl overflow-hidden">
+                        <img src="images/snorkling2.jpeg" alt="Paris, France" class="absolute inset-0 w-full h-full object-cover rounded-xl">
+                        <div class="text-6xl">🏔️</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">One-Day Trip Mapur Island</h3>
+                        <p class="text-gray-600 mb-4">3 hari menjelajahi Gunung Bintan</p>
+                        <ul class="text-sm text-gray-600 mb-6 space-y-2">
+                            <li>📅 Recommended Trip Gunung Bintan, Melayani Open Trip, Private Trip Local/Mancanegara</li>
+                            <li>▫▫▫</li>
+                            <li class="font-bold mt-4">Jadwal Open Trip Gunung Bintan :</li>
+                            <li>▫▫▫</li>
+                            <li>📋📋📋</li>
+                            <li class="font-bold mt-4">Jalur Via Bintan (Everyday)</li>
+                            <li>▫▫▫</li>
+                            <li>💵💵💵</li>
+                            <li class="font-bold mt-4">List Harga Keperluan :</li>
+                            <li>Mobil 50k pp (Minimal 6/Pax)</li>
+                            <li>Guide 200k per day</li>
+                            <li>Carrier 50k per day</li>
+                            <li>Tenda 100k (for 3 person) per day</li>
+                            <li>Camp site (hammock, flysheet, meja+kursi) 70k per day</li>
+                            <li>Welcome drink, BBQ, lunchbox, air mineral 100k per day</li>
+                            <li>the ammount of total if include all the list</li>
+                            <li>$ IDR : 1.499.000</li>
+                            <li>$ RM : 500 RM</li>
+                            <li>$ USD : $ 75</li>
+                            <li>▫▫▫</li>
+                            <li class="font-bold mt-4">Nomor Rekening :</li>
+                            <li>» Bank BRI : -</li>
+                            <li>» Bank Mandiri : -</li>
+                            <li>» Bank BNI Syariah : -</li>
+                            <li>AN/---</li>
+                            <li>▫▫▫</li>
+                            <li>☎☎☎</li>
+                            <li class="font-bold mt-4">Informasi Pendaftaran :</li>
+                            <li>» DP Min 50%, Pelunasan Max H-7, Cancel H-14 dana Hangus</li>
+                            <li>» Whatsaap 089669300203</li>
+                            <li>» Instagram @bangunjiwa.artventure</li>
+                            <li>▫▫▫</li>
+                            <li>#bintanhopping #id_traveler #mountainesia #instapantai #pendakiindonesia #mapurisland #thisisindonesian #opentrip #tripmapur #tripmurah #malaysiahopper #singaporehopper 
+                            <li>▫▫▫</li>
+                            <li class="font-bold mt-4">Paket Sudah Termasuk :</li>
+                            <li>✅ Transportasi Bandara – Pol Damri PP</li>
+                            <li>✅ Transportasi Bus Pontianak – Nanga Pinoh PP</li>
+                            <li>✅ Transportasi Speed Boat Pelabuhan – Desa Rantau Malam PP</li>
+                            <li>✅ Transportasi Ojek Desa Rantau Malam – Kolong HP PP</li>
+                            <li>✅ Rumah Singgah</li>
+                            <li>✅ Simaksi Pendakian</li>
+                            <li>✅ Upacara Adat</li>
+                            <li>✅ Guide Profesional</li>
+                            <li>✅ T-Shirt Pendakian</li>
+                            <li>✅ Tenda & Cooking Set</li>
+                            <li>✅ Makan Selama Pendakian</li>
+                            <li>✅ Makan Sebelum Sesudah 2x</li>
+                            <li>✅ T-Shirt Pendakian + Stiker</li>
+                            <li>✅ Tenda & Cooking</li>
+                            <li>✅ Kebersihan Basecamp</li>
+                            <li>✅ Welcome Drink</li>
+                            <li>✅ Logistik Team</li>
+                            <li>✅ First Aid Kid</li>
+                            <li>✅ Dokumentasi Kegiatan</li>
+                            <li>✅ Sertifikat Pendakian</li>
+                            <li>▫▫▫</li>
+                            <li>Paket Tidak Termasuk :</li>
+                            <li>❌ Transportasi dari kota asal</li>
+                            <li>❌ Makan Selama Perjalanan</li>
+                            <li>❌ Porter Pribadi</li>
+                            <li>❌ Perlengkapan Pribadi</li>
+                            <li>❌ Jodoh</li>
+                            <li>▫▫▫</li>
+                            <li class="font-bold mt-4">Itinerary</li>
+                            <li class="font-bold mt-4">Day 1</li>
+                            <li>09:00 – 09:30 WIB : Meeting Point di lokasi yang ditentukan</li>
+                            <li>09:30 – 10:00 WIB : Perjalanan Menuju Gunung Bintan</li>
+                            <li>10:00 – 12:00 WIB : Pintu Rimba Gunung Bintan</li>
+                            <li>12:00 – 13:00 WIB : Makan Siang di Gunung Bintan</li>
+                            <li>13:00 – 15:00 WIB : Explorasi titik camp</li>
+                            <li>15:00 – 16:00 WIB : Istirahat dan Menikmati Pemandangan Disekitar Gunung Bintan</li>
+                            <li>17:00 – 18:00 WIB : Makan Malam di Gunung Bintan</li>
+                            <li>18:00 – 19:00 WIB : Persiapan Kembali ke Kawal</li>
+                        </ul>
+                        <div class="flex justify-between items-center">
+                            <span class="text-3xl font-bold text-indigo-600">3-day Trip</span>
+                            <button class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition duration-300">
+                                Pesan Sekarang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 3 -->
+                <div class="bg-white rounded-xl shadow-lg card-hover overflow-hidden">
+                  <div class="h-48 relative flex items-center justify-center rounded-xl overflow-hidden">
+                        <img src="images/jalanrumput.jpeg" alt="Paris, France" class="absolute inset-0 w-full h-full object-cover rounded-xl">
+                        <div class="text-6xl">🏛️</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">One-Day Trip Mapur Island</h3>
+                        <p class="text-gray-600 mb-4">3 hari menjelajahi Gunung Bintan</p>
+                        <ul class="text-sm text-gray-600 mb-6 space-y-2">
+                            <li>📅 Recommended Trip Gunung Bintan, Melayani Open Trip, Private Trip Local/Mancanegara</li>
+                            <li>▫▫▫</li>
+                            <li class="font-bold mt-4">Jadwal Open Trip Gunung Bintan :</li>
+                            <li>▫▫▫</li>
+                            <li>📋📋📋</li>
+                            <li class="font-bold mt-4">Jalur Via Bintan (Everyday)</li>
+                            <li>▫▫▫</li>
+                            <li>💵💵💵</li>
+                            <li class="font-bold mt-4">List Harga Keperluan :</li>
+                            <li>Mobil 50k pp (Minimal 6/Pax)</li>
+                            <li>Guide 200k per day</li>
+                            <li>Carrier 50k per day</li>
+                            <li>Tenda 100k (for 3 person) per day</li>
+                            <li>Camp site (hammock, flysheet, meja+kursi) 70k per day</li>
+                            <li>Welcome drink, BBQ, lunchbox, air mineral 100k per day</li>
+                            <li>the ammount of total if include all the list</li>
+                            <li>$ IDR : 1.499.000</li>
+                            <li>$ RM : 500 RM</li>
+                            <li>$ USD : $ 75</li>
+                            <li>▫▫▫</li>
+                            <li class="font-bold mt-4">Nomor Rekening :</li>
+                            <li>» Bank BRI : -</li>
+                            <li>» Bank Mandiri : -</li>
+                            <li>» Bank BNI Syariah : -</li>
+                            <li>AN/---</li>
+                            <li>▫▫▫</li>
+                            <li>☎☎☎</li>
+                            <li class="font-bold mt-4">Informasi Pendaftaran :</li>
+                            <li>» DP Min 50%, Pelunasan Max H-7, Cancel H-14 dana Hangus</li>
+                            <li>» Whatsaap 089669300203</li>
+                            <li>» Instagram @bangunjiwa.artventure</li>
+                            <li>▫▫▫</li>
+                            <li>#bintanhopping #id_traveler #mountainesia #instapantai #pendakiindonesia #mapurisland #thisisindonesian #opentrip #tripmapur #tripmurah #malaysiahopper #singaporehopper 
+                            <li>▫▫▫</li>
+                            <li class="font-bold mt-4">Paket Sudah Termasuk :</li>
+                            <li>✅ Transportasi Bandara – Pol Damri PP</li>
+                            <li>✅ Transportasi Bus Pontianak – Nanga Pinoh PP</li>
+                            <li>✅ Transportasi Speed Boat Pelabuhan – Desa Rantau Malam PP</li>
+                            <li>✅ Transportasi Ojek Desa Rantau Malam – Kolong HP PP</li>
+                            <li>✅ Rumah Singgah</li>
+                            <li>✅ Simaksi Pendakian</li>
+                            <li>✅ Upacara Adat</li>
+                            <li>✅ Guide Profesional</li>
+                            <li>✅ T-Shirt Pendakian</li>
+                            <li>✅ Tenda & Cooking Set</li>
+                            <li>✅ Makan Selama Pendakian</li>
+                            <li>✅ Makan Sebelum Sesudah 2x</li>
+                            <li>✅ T-Shirt Pendakian + Stiker</li>
+                            <li>✅ Tenda & Cooking</li>
+                            <li>✅ Kebersihan Basecamp</li>
+                            <li>✅ Welcome Drink</li>
+                            <li>✅ Logistik Team</li>
+                            <li>✅ First Aid Kid</li>
+                            <li>✅ Dokumentasi Kegiatan</li>
+                            <li>✅ Sertifikat Pendakian</li>
+                            <li>▫▫▫</li>
+                            <li>Paket Tidak Termasuk :</li>
+                            <li>❌ Transportasi dari kota asal</li>
+                            <li>❌ Makan Selama Perjalanan</li>
+                            <li>❌ Porter Pribadi</li>
+                            <li>❌ Perlengkapan Pribadi</li>
+                            <li>❌ Jodoh</li>
+                            <li>▫▫▫</li>
+                            <li class="font-bold mt-4">Itinerary</li>
+                            <li class="font-bold mt-4">Day 1</li>
+                            <li>09:00 – 09:30 WIB : Meeting Point di lokasi yang ditentukan</li>
+                            <li>09:30 – 10:00 WIB : Perjalanan Menuju Gunung Bintan</li>
+                            <li>10:00 – 12:00 WIB : Pintu Rimba Gunung Bintan</li>
+                            <li>12:00 – 13:00 WIB : Makan Siang di Gunung Bintan</li>
+                            <li>13:00 – 15:00 WIB : Explorasi titik camp</li>
+                            <li>15:00 – 16:00 WIB : Istirahat dan Menikmati Pemandangan Disekitar Gunung Bintan</li>
+                            <li>17:00 – 18:00 WIB : Makan Malam di Gunung Bintan</li>
+                            <li>18:00 – 19:00 WIB : Persiapan Kembali ke Kawal</li>
+                        </ul>
+                        <div class="flex justify-between items-center">
+                            <span class="text-3xl font-bold text-indigo-600">$2,499</span>
+                            <button class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition duration-300">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rental Item Calculator -->
+    <section class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen p-6">
+    <div class="max-w-6xl mx-auto">
+        <div class="bg-white rounded-xl shadow-lg p-8">
+            <h1 class="text-3xl font-bold text-gray-800 mb-2 text-center">Check The Cost</h1>
+            <p class="text-gray-600 text-center mb-8">Hitung total kalkulasi besaran budget yang kamu perlukan selama perjalanan</p>
+            
+            <!-- Add Item Form -->
+            <div class="bg-gray-50 rounded-lg p-6 mb-8">
+                <h2 class="text-xl font-semibold text-gray-700 mb-4">Cek Item & Harga</h2>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div class="relative">
+                        <input type="text" id="itemName" placeholder="Item Name" 
+                               oninput="showSuggestions(this.value)" 
+                               onblur="hideSuggestions()" 
+                               onkeydown="handleKeyDown(event)"
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <div id="suggestions" class="absolute z-10 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-1 hidden max-h-48 overflow-y-auto">
+                            <!-- Suggestions will appear here -->
+                        </div>
+                    </div>
+                    <input type="number" id="dailyPrice" placeholder="Price per Day (Rp)" min="0" step="1000"
+                           class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <input type="number" id="rentalDays" placeholder="Rental Days" min="1" value="1"
+                           class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <button onclick="addItem()" 
+                            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-200">
+                        Add Item
+                    </button>
+                </div>
+            </div>
+
+            <!-- Rental Table -->
+            <div class="overflow-x-auto">
+                <table class="w-full bg-white border border-gray-200 rounded-lg">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700 border-b">Item Name</th>
+                            <th class="px-6 py-4 text-center text-sm font-semibold text-gray-700 border-b">Price per Day</th>
+                            <th class="px-6 py-4 text-center text-sm font-semibold text-gray-700 border-b">Days</th>
+                            <th class="px-6 py-4 text-center text-sm font-semibold text-gray-700 border-b">Total Cost</th>
+                            <th class="px-6 py-4 text-center text-sm font-semibold text-gray-700 border-b">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rentalTableBody">
+                        <!-- Items will be added here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="text-center py-12">
+                <div class="text-gray-400 text-6xl mb-4">🏕️</div>
+                <p class="text-gray-500 text-lg">No items added yet</p>
+                <p class="text-gray-400">Add your first rental item above to get started</p>
+            </div>
+
+            <!-- Total Summary -->
+            <div id="totalSummary" class="hidden mt-8 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6 border border-green-200">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-800">Total Rental Cost</h3>
+                        <p class="text-gray-600">For <span id="totalItems">0</span> item(s)</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-3xl font-bold text-green-600" id="grandTotal">$0.00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6">Why Choose Bangun Jiwa Artventure?</h2>
+                    <p class="text-lg text-gray-600 mb-8">We've been creating unforgettable travel experiences for over 10 years. Our passion for exploration and commitment to excellence ensures every journey is extraordinary.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="text-2xl mr-4">🌟</div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-800 mb-2">Expert Planning</h3>
+                                <p class="text-gray-600">Our travel experts craft personalized itineraries tailored to your preferences</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-2xl mr-4">🛡️</div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-800 mb-2">Safe & Secure</h3>
+                                <p class="text-gray-600">24/7 support and comprehensive security for peace of mind</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-2xl mr-4">💎</div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-800 mb-2">Premium Quality</h3>
+                                <p class="text-gray-600">Handpicked accommodations and experiences that exceed expectations</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl p-8 text-white">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">🌍</div>
+                        <h3 class="text-2xl font-bold mb-4">Ready for Your Next Adventure?</h3>
+                        <p class="mb-6 opacity-90">Join hundreds of happy travelers who have discovered the world with us</p>
+                        <button class="bg-white text-indigo-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300">
+                            Start Planning
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-100">
+        ><div class="p-0 flex gap-0 h-min w-auto relative box-border items-start min-h-screen overflow-visible [flex-flow:column] [place-content:flex-start] [-webkit-font-smoothing:antialiased] [background-color:oklch(11.193%0.06133_295.4)]"
+        ><div class="flex h-min w-full relative px-[40px] box-border py-[137px] gap-[118px] items-center flex-[0_0_auto] overflow-hidden [flex-flow:column] place-content-center [-webkit-font-smoothing:antialiased] [background-color:oklch(11.193%0.06133_295.4)]"
+            ><div class="p-0 flex h-min w-[93%] relative box-border gap-[34px] items-center flex-[0_0_auto] overflow-visible [flex-flow:column] [place-content:center_flex-start] [-webkit-font-smoothing:antialiased]"
+            ><div class="contents box-border lg:[-webkit-font-smoothing:antialiased]"
+                ><div class="h-auto w-auto relative box-border opacity-100 flex-[0_0_auto] will-change-transform [transform:perspective(1200px)] lg:[-webkit-font-smoothing:antialiased]"
+                ><div class="flex h-min w-min relative px-[8px] py-[4px] gap-[6px] box-border opacity-100 items-center rounded-[6px] [flex-flow:row] overflow-visible [place-content:center_flex-start] [background-color:oklch(22.683%0.11868_286.8)] lg:[-webkit-font-smoothing:antialiased]"
+                    ><div class="h-auto w-[6px] relative box-border opacity-100 aspect-[1/1] rounded-[100%] flex-[0_0_auto] [background-color:oklch(89.427%0.05488_293.28)] lg:[-webkit-font-smoothing:antialiased]"
+                    ></div
+                    ><div class="flex h-auto w-auto flex-col shrink-0 relative box-border opacity-100 justify-start [outline:none] whitespace-pre flex-[0_0_auto] [transform:none] lg:[-webkit-font-smoothing:antialiased]"
+                    ><p class="m-0 p-0 box-border not-italic text-center normal-case no-underline font-semibold leading-[20px] [font-size:12px] tracking-[0.06em] [font-feature-settings:'normal'] [font-variation-settings:normal] text-[oklch(89.427%0.05488_293.28)] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [font-family:IBM_Plex_Mono,'monospace'] lg:[-webkit-font-smoothing:antialiased]"
+                        >TESTIMONIALS</p
+                        ></div
+                    ></div
+                    ></div
+                ></div
+                ><div class="contents box-border [-webkit-font-smoothing:antialiased]"
+                ><div class="flex h-auto flex-col shrink-0 relative w-[106%] box-border opacity-100 break-words justify-start [outline:none] flex-[0_0_auto] whitespace-pre-wrap will-change-transform [word-break:break-word] [transform:perspective(1200px)] [-webkit-font-smoothing:antialiased] lg:w-full"
+                ><h2 class="m-0 p-0 box-border not-italic font-medium text-center normal-case no-underline leading-[100%] [font-size:50px] tracking-[-0.04em] [font-feature-settings:'normal'] [font-variation-settings:normal] text-[oklch(95.887%0.00734_312.3)] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [-webkit-font-smoothing:antialiased] [font-family:Be_Vietnam_Pro,Be_Vietnam_Pro_Placeholder,sans-serif]"
+                    >Our happy customers</h2
+                    ></div
+                ></div
+                ></div
+            ><div class="p-0 flex h-min flex-col relative box-border gap-[20px] max-w-full w-[1000px] items-start flex-[0_0_auto] [flex-flow:row] overflow-visible [place-content:flex-start_center] [-webkit-font-smoothing:antialiased] lg:[flex-direction:unset]"
+            ><div class="p-0 flex h-min w-full relative box-border gap-[20px] items-center flex-[0_0_auto] overflow-visible [flex-flow:column] place-content-center [-webkit-font-smoothing:antialiased] lg:w-px lg:flex-[1_0_0px]"
+                ><a target="_blank" class="flex h-min w-full order-1 relative p-[30px] box-border gap-[20px] opacity-100 items-center no-underline rounded-[20px] flex-[0_0_auto] [transform:none] [flex-flow:column] will-change-transform [place-content:center_flex-start] [-webkit-font-smoothing:antialiased] [background-color:oklch(100%0_none)] shadow-[0_0.796192px_2.38858px_-0.625px_oklch(0%0_none/0.05),0_2.41451px_7.24352px_-1.25px_oklch(0%0_none/0.05),0_6.38265px_19.148px_-1.875px_oklch(0%0_none/0.05),0_20px_60px_-2.5px_oklch(0%0_none/0.05)] lg:order-[unset]"
+                ><div class="p-0 flex h-min w-full relative box-border gap-[15px] items-center flex-[0_0_auto] [flex-flow:row] overflow-hidden [place-content:center_flex-start] [-webkit-font-smoothing:antialiased]"
+                    ><div class="h-auto relative w-[50px] box-border aspect-[1/1] rounded-[50%] flex-[0_0_auto] overflow-hidden will-change-[none] [-webkit-font-smoothing:antialiased]"
+                    ><div class="inset-0 absolute box-border rounded-[inherit] [-webkit-font-smoothing:antialiased]"
+                        ><img decoding="async" loading="lazy" src="" alt="" class="block h-full w-full box-border object-cover rounded-[inherit] object-[center_center] [-webkit-font-smoothing:antialiased]"
+                        /></div
+                        ></div
+                    ><div class="p-0 flex w-px gap-0 h-min relative box-border items-start flex-[1_0_0px] overflow-hidden [flex-flow:column] [place-content:flex-start_center] [-webkit-font-smoothing:antialiased]"
+                    ><div class="flex h-auto w-auto flex-col shrink-0 relative box-border justify-start [outline:none] whitespace-pre flex-[0_0_auto] overflow-visible [transform:none] [-webkit-font-smoothing:antialiased]"
+                        ><h3 class="m-0 p-0 font-bold text-left box-border not-italic normal-case no-underline leading-[1.4em] [font-size:20px] tracking-[-0.8px] text-[oklch(32.109%0_none)] [font-feature-settings:'normal'] [font-variation-settings:normal] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [-webkit-font-smoothing:antialiased] [font-family:Inter,Inter_Placeholder,sans-serif]"
+                        >Anonymous</h3
+                        ></div
+                        ><div class="flex h-auto w-auto flex-col shrink-0 relative box-border justify-start [outline:none] whitespace-pre flex-[0_0_auto] overflow-visible [transform:none] [-webkit-font-smoothing:antialiased]"
+                        ><p class="m-0 p-0 text-left box-border not-italic font-normal normal-case no-underline leading-[1.5em] [font-size:14px] tracking-[-0.7px] text-[oklch(68.295%0_none)] [font-feature-settings:'normal'] [font-variation-settings:normal] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [-webkit-font-smoothing:antialiased] [font-family:Inter,Inter_Placeholder,sans-serif]"
+                        >@-</p
+                        ></div
+                        ></div
+                    ></div
+                    ><div class="flex h-auto w-full flex-col shrink-0 relative box-border break-words justify-start [outline:none] flex-[0_0_auto] overflow-visible [transform:none] whitespace-pre-wrap [word-break:break-word] [-webkit-font-smoothing:antialiased]"
+                    ><p class="m-0 p-0 text-left box-border not-italic font-medium normal-case tracking-[0] no-underline leading-[1.6em] [font-size:16px] text-[oklch(51.028%0_none)] [font-feature-settings:'normal'] [font-variation-settings:normal] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [-webkit-font-smoothing:antialiased] [font-family:Inter,Inter_Placeholder,sans-serif]"
+                    >gak ekspect gunung Bintan jalurnya dahsyat juga, tapi memberi kenangan yang tak terlupakan. the best lah pokoknya .🦾🧑‍💻</p
+                    ></div
+                    ></a
+                ><a target="_blank" class="flex h-min w-full relative p-[30px] box-border gap-[20px] order-none opacity-100 items-center no-underline rounded-[20px] flex-[0_0_auto] [transform:none] [flex-flow:column] will-change-transform [place-content:center_flex-start] [-webkit-font-smoothing:antialiased] [background-color:oklch(100%0_none)] shadow-[0_0.796192px_2.38858px_-0.625px_oklch(0%0_none/0.05),0_2.41451px_7.24352px_-1.25px_oklch(0%0_none/0.05),0_6.38265px_19.148px_-1.875px_oklch(0%0_none/0.05),0_20px_60px_-2.5px_oklch(0%0_none/0.05)] lg:order-[unset]"
+                ><div class="p-0 flex h-min w-full relative box-border gap-[15px] items-center flex-[0_0_auto] [flex-flow:row] overflow-hidden [place-content:center_flex-start] [-webkit-font-smoothing:antialiased]"
+                    ><div class="h-auto relative w-[50px] box-border aspect-[1/1] rounded-[50%] flex-[0_0_auto] overflow-hidden will-change-[none] [-webkit-font-smoothing:antialiased]"
+                    ><div class="inset-0 absolute box-border rounded-[inherit] [-webkit-font-smoothing:antialiased]"
+                        ><img decoding="async" loading="lazy" src="" alt="" class="block h-full w-full box-border object-cover rounded-[inherit] object-[center_center] [-webkit-font-smoothing:antialiased]"
+                        /></div
+                        ></div
+                    ><div class="p-0 flex w-px gap-0 h-min relative box-border items-start flex-[1_0_0px] overflow-hidden [flex-flow:column] [place-content:flex-start_center] [-webkit-font-smoothing:antialiased]"
+                    ><div class="flex h-auto w-auto flex-col shrink-0 relative box-border justify-start [outline:none] whitespace-pre flex-[0_0_auto] overflow-visible [transform:none] [-webkit-font-smoothing:antialiased]"
+                        ><h3 class="m-0 p-0 font-bold text-left box-border not-italic normal-case no-underline leading-[1.4em] [font-size:20px] tracking-[-0.8px] text-[oklch(32.109%0_none)] [font-feature-settings:'normal'] [font-variation-settings:normal] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [-webkit-font-smoothing:antialiased] [font-family:Inter,Inter_Placeholder,sans-serif]"
+                        ><strong class="box-border not-italic font-[bolder] [-webkit-font-smoothing:antialiased] [font-family:Inter,Inter_Placeholder,sans-serif] [font-variation-settings:var(--framer-font-variation-axes-bold)]"
+                            >Pangestu</strong
+                            ></h3
+                        ></div
+                        ><div class="flex h-auto w-auto flex-col shrink-0 relative box-border justify-start [outline:none] whitespace-pre flex-[0_0_auto] overflow-visible [transform:none] [-webkit-font-smoothing:antialiased]"
+                        ><p class="m-0 p-0 text-left box-border not-italic font-normal normal-case no-underline leading-[1.5em] [font-size:14px] tracking-[-0.7px] text-[oklch(68.295%0_none)] [font-feature-settings:'normal'] [font-variation-settings:normal] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [-webkit-font-smoothing:antialiased] [font-family:Inter,Inter_Placeholder,sans-serif]"
+                        >@Pangestu</p
+                        ></div
+                        ></div
+                    ></div
+                    ><div class="flex h-auto w-full flex-col shrink-0 relative box-border break-words justify-start [outline:none] flex-[0_0_auto] overflow-visible [transform:none] whitespace-pre-wrap [word-break:break-word] [-webkit-font-smoothing:antialiased]"
+                    ><p class="m-0 p-0 text-left box-border not-italic font-medium normal-case tracking-[0] no-underline leading-[1.6em] [font-size:16px] text-[oklch(51.028%0_none)] [font-feature-settings:'normal'] [font-variation-settings:normal] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [-webkit-font-smoothing:antialiased] [font-family:Inter,Inter_Placeholder,sans-serif]"
+                    >Gokil. mapur memang catik kali lah, kentang kali memang kalau cuma 1 hari, untuk kalian yang penasaran dengan gimana mapur dan spot spot ter the best di mapur, sama orang ini aja.😊</p
+                    ></div
+                    ></a
+                ></div
+                ><div class="p-0 flex h-min w-full relative box-border gap-[20px] items-center flex-[0_0_auto] overflow-visible [flex-flow:column] place-content-center [-webkit-font-smoothing:antialiased] lg:w-px lg:flex-[1_0_0px]"
+                ><a target="_blank" class="flex h-min w-full relative p-[30px] box-border gap-[20px] order-none opacity-100 items-center no-underline rounded-[20px] flex-[0_0_auto] [transform:none] [flex-flow:column] will-change-transform [place-content:center_flex-start] [-webkit-font-smoothing:antialiased] [background-color:oklch(100%0_none)] shadow-[0_0.796192px_2.38858px_-0.625px_oklch(0%0_none/0.05),0_2.41451px_7.24352px_-1.25px_oklch(0%0_none/0.05),0_6.38265px_19.148px_-1.875px_oklch(0%0_none/0.05),0_20px_60px_-2.5px_oklch(0%0_none/0.05)] lg:order-[unset]"
+                ><div class="p-0 flex h-min w-full relative box-border gap-[15px] items-center flex-[0_0_auto] [flex-flow:row] overflow-hidden [place-content:center_flex-start] [-webkit-font-smoothing:antialiased]"
+                    ><div class="h-auto relative w-[50px] box-border aspect-[1/1] rounded-[50%] flex-[0_0_auto] overflow-hidden will-change-[none] [-webkit-font-smoothing:antialiased]"
+                    ><div class="inset-0 absolute box-border rounded-[inherit] [-webkit-font-smoothing:antialiased]"
+                        ><img decoding="async" loading="lazy" src="" alt="" class="block h-full w-full box-border object-cover rounded-[inherit] object-[center_center] [-webkit-font-smoothing:antialiased]"
+                        /></div
+                        ></div
+                    ><div class="p-0 flex w-px gap-0 h-min relative box-border items-start flex-[1_0_0px] overflow-hidden [flex-flow:column] [place-content:flex-start_center] [-webkit-font-smoothing:antialiased]"
+                    ><div class="flex h-auto w-auto flex-col shrink-0 relative box-border justify-start [outline:none] whitespace-pre flex-[0_0_auto] overflow-visible [transform:none] [-webkit-font-smoothing:antialiased]"
+                        ><h3 class="m-0 p-0 font-bold text-left box-border not-italic normal-case no-underline leading-[1.4em] [font-size:20px] tracking-[-0.8px] text-[oklch(32.109%0_none)] [font-feature-settings:'normal'] [font-variation-settings:normal] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [-webkit-font-smoothing:antialiased] [font-family:Inter,Inter_Placeholder,sans-serif]"
+                        >Putra</h3
+                        ></div
+                        ><div class="flex h-auto w-auto flex-col shrink-0 relative box-border justify-start [outline:none] whitespace-pre flex-[0_0_auto] overflow-visible [transform:none] [-webkit-font-smoothing:antialiased]"
+                        ><p class="m-0 p-0 text-left box-border not-italic font-normal normal-case no-underline leading-[1.5em] [font-size:14px] tracking-[-0.7px] text-[oklch(68.295%0_none)] [font-feature-settings:'normal'] [font-variation-settings:normal] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [-webkit-font-smoothing:antialiased] [font-family:Inter,Inter_Placeholder,sans-serif]"
+                        >@-</p
+                        ></div
+                        ></div
+                    ></div
+                    ><div class="flex h-auto w-full flex-col shrink-0 relative box-border break-words justify-start [outline:none] flex-[0_0_auto] overflow-visible [transform:none] whitespace-pre-wrap [word-break:break-word] [-webkit-font-smoothing:antialiased]"
+                    ><p class="m-0 p-0 text-left box-border not-italic font-medium normal-case tracking-[0] no-underline leading-[1.6em] [font-size:16px] text-[oklch(51.028%0_none)] [font-feature-settings:'normal'] [font-variation-settings:normal] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [-webkit-font-smoothing:antialiased] [font-family:Inter,Inter_Placeholder,sans-serif]"
+                    >orang orang didalamnya asik dan baik, sering kasih nomor LC 🔥<br class="box-border [-webkit-font-smoothing:antialiased]"
+                        />menyala Bangun Jiwa Artventure!</p
+                    ></div
+                    ></a
+                ><a target="_blank" class="flex h-min w-full order-1 relative p-[30px] box-border gap-[30px] opacity-100 items-center no-underline rounded-[20px] flex-[0_0_auto] [transform:none] [flex-flow:column] will-change-transform [place-content:center_flex-start] [-webkit-font-smoothing:antialiased] [background-color:oklch(100%0_none)] shadow-[0_0.796192px_2.38858px_-0.625px_oklch(0%0_none/0.05),0_2.41451px_7.24352px_-1.25px_oklch(0%0_none/0.05),0_6.38265px_19.148px_-1.875px_oklch(0%0_none/0.05),0_20px_60px_-2.5px_oklch(0%0_none/0.05)] lg:order-[unset]"
+                ><div class="p-0 flex h-min w-full relative box-border gap-[15px] items-center flex-[0_0_auto] [flex-flow:row] overflow-hidden [place-content:center_flex-start] [-webkit-font-smoothing:antialiased]"
+                    ><div class="h-auto relative w-[50px] box-border aspect-[1/1] rounded-[50%] flex-[0_0_auto] overflow-hidden will-change-[none] [-webkit-font-smoothing:antialiased]"
+                    ><div class="inset-0 absolute box-border rounded-[inherit] [-webkit-font-smoothing:antialiased]"
+                        ><img decoding="async" loading="lazy" src="" alt="" class="block h-full w-full box-border object-cover rounded-[inherit] object-[center_center] [-webkit-font-smoothing:antialiased]"
+                        /></div
+                        ></div
+                    ><div class="p-0 flex w-px gap-0 h-min relative box-border items-start flex-[1_0_0px] overflow-hidden [flex-flow:column] [place-content:flex-start_center] [-webkit-font-smoothing:antialiased]"
+                    ><div class="flex h-auto w-auto flex-col shrink-0 relative box-border justify-start [outline:none] whitespace-pre flex-[0_0_auto] overflow-visible [transform:none] [-webkit-font-smoothing:antialiased]"
+                        ><h3 class="m-0 p-0 font-bold text-left box-border not-italic normal-case no-underline leading-[1.4em] [font-size:20px] tracking-[-0.8px] text-[oklch(32.109%0_none)] [font-feature-settings:'normal'] [font-variation-settings:normal] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [-webkit-font-smoothing:antialiased] [font-family:Inter,Inter_Placeholder,sans-serif]"
+                        >Abidin</h3
+                        ></div
+                        ><div class="flex h-auto w-auto flex-col shrink-0 relative box-border justify-start [outline:none] whitespace-pre flex-[0_0_auto] overflow-visible [transform:none] [-webkit-font-smoothing:antialiased]"
+                        ><p class="m-0 p-0 text-left box-border not-italic font-normal normal-case no-underline leading-[1.5em] [font-size:14px] tracking-[-0.7px] text-[oklch(68.295%0_none)] [font-feature-settings:'normal'] [font-variation-settings:normal] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [-webkit-font-smoothing:antialiased] [font-family:Inter,Inter_Placeholder,sans-serif]"
+                        >@Abidin</p
+                        ></div
+                        ></div
+                    ></div
+                    ><div class="flex h-auto w-full flex-col shrink-0 relative box-border break-words justify-start [outline:none] flex-[0_0_auto] overflow-visible [transform:none] whitespace-pre-wrap [word-break:break-word] [-webkit-font-smoothing:antialiased]"
+                    ><p class="m-0 p-0 text-left box-border not-italic font-medium normal-case tracking-[0] no-underline leading-[1.6em] [font-size:16px] text-[oklch(51.028%0_none)] [font-feature-settings:'normal'] [font-variation-settings:normal] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [-webkit-font-smoothing:antialiased] [font-family:Inter,Inter_Placeholder,sans-serif]"
+                    >gas lah, apa lagi lah ya kan. mumpung ada dan murah 🚀🚀</p
+                    ></div
+                    ></a
+                ><a target="_blank" class="flex h-min w-full order-2 relative p-[30px] box-border gap-[30px] opacity-100 items-center no-underline rounded-[20px] flex-[0_0_auto] [transform:none] [flex-flow:column] will-change-transform [place-content:center_flex-start] [-webkit-font-smoothing:antialiased] [background-color:oklch(100%0_none)] shadow-[0_0.796192px_2.38858px_-0.625px_oklch(0%0_none/0.05),0_2.41451px_7.24352px_-1.25px_oklch(0%0_none/0.05),0_6.38265px_19.148px_-1.875px_oklch(0%0_none/0.05),0_20px_60px_-2.5px_oklch(0%0_none/0.05)] lg:order-[unset]"
+                ><div class="p-0 flex h-min w-full relative box-border gap-[15px] items-center flex-[0_0_auto] [flex-flow:row] overflow-hidden [place-content:center_flex-start] [-webkit-font-smoothing:antialiased]"
+                    ><div class="h-auto relative w-[50px] box-border aspect-[1/1] rounded-[50%] flex-[0_0_auto] overflow-hidden will-change-[none] [-webkit-font-smoothing:antialiased]"
+                    ><div class="inset-0 absolute box-border rounded-[inherit] [-webkit-font-smoothing:antialiased]"
+                        ><img decoding="async" loading="lazy" src="" alt="" class="block h-full w-full box-border object-cover rounded-[inherit] object-[center_center] [-webkit-font-smoothing:antialiased]"
+                        /></div
+                        ></div
+                    ><div class="p-0 flex w-px gap-0 h-min relative box-border items-start flex-[1_0_0px] overflow-hidden [flex-flow:column] [place-content:flex-start_center] [-webkit-font-smoothing:antialiased]"
+                    ><div class="flex h-auto w-auto flex-col shrink-0 relative box-border justify-start [outline:none] whitespace-pre flex-[0_0_auto] overflow-visible [transform:none] [-webkit-font-smoothing:antialiased]"
+                        ><h3 class="m-0 p-0 font-bold text-left box-border not-italic normal-case no-underline leading-[1.4em] [font-size:20px] tracking-[-0.8px] text-[oklch(32.109%0_none)] [font-feature-settings:'normal'] [font-variation-settings:normal] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [-webkit-font-smoothing:antialiased] [font-family:Inter,Inter_Placeholder,sans-serif]"
+                        >Fajri</h3
+                        ></div
+                        ><div class="flex h-auto w-auto flex-col shrink-0 relative box-border justify-start [outline:none] whitespace-pre flex-[0_0_auto] overflow-visible [transform:none] [-webkit-font-smoothing:antialiased]"
+                        ><p class="m-0 p-0 text-left box-border not-italic font-normal normal-case no-underline leading-[1.5em] [font-size:14px] tracking-[-0.7px] text-[oklch(68.295%0_none)] [font-feature-settings:'normal'] [font-variation-settings:normal] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [-webkit-font-smoothing:antialiased] [font-family:Inter,Inter_Placeholder,sans-serif]"
+                        >@-</p
+                        ></div
+                        ></div
+                    ></div
+                    ><div class="flex h-auto w-full flex-col shrink-0 relative box-border break-words justify-start [outline:none] flex-[0_0_auto] overflow-visible [transform:none] whitespace-pre-wrap [word-break:break-word] [-webkit-font-smoothing:antialiased]"
+                    ><p class="m-0 p-0 text-left box-border not-italic font-medium normal-case tracking-[0] no-underline leading-[1.6em] [font-size:16px] text-[oklch(51.028%0_none)] [font-feature-settings:'normal'] [font-variation-settings:normal] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [-webkit-font-smoothing:antialiased] [font-family:Inter,Inter_Placeholder,sans-serif]"
+                    >terimakasih Bangun Jiwa Artventure atas pengalaman yang tak terlupakan. 2 hal yang saya suka  </p
+                    ><p class="m-0 p-0 text-left box-border not-italic font-medium normal-case tracking-[0] no-underline leading-[1.6em] [font-size:16px] text-[oklch(51.028%0_none)] [font-feature-settings:'normal'] [font-variation-settings:normal] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [-webkit-font-smoothing:antialiased] [font-family:Inter,Inter_Placeholder,sans-serif]"
+                    ><br class="box-border [-webkit-font-smoothing:antialiased]"
+                        /></p
+                    ><p class="m-0 p-0 text-left box-border not-italic font-medium normal-case tracking-[0] no-underline leading-[1.6em] [font-size:16px] text-[oklch(51.028%0_none)] [font-feature-settings:'normal'] [font-variation-settings:normal] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [-webkit-font-smoothing:antialiased] [font-family:Inter,Inter_Placeholder,sans-serif]"
+                    >1) asik dan gak ngebosenin guidenya,</p
+                    ><p class="m-0 p-0 text-left box-border not-italic font-medium normal-case tracking-[0] no-underline leading-[1.6em] [font-size:16px] text-[oklch(51.028%0_none)] [font-feature-settings:'normal'] [font-variation-settings:normal] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [-webkit-font-smoothing:antialiased] [font-family:Inter,Inter_Placeholder,sans-serif]"
+                    >2) chefnya terlalu niat masaknya, jadi kayak tour culiner pulak wkwkw.</p
+                    ><p class="m-0 p-0 text-left box-border not-italic font-medium normal-case tracking-[0] no-underline leading-[1.6em] [font-size:16px] text-[oklch(51.028%0_none)] [font-feature-settings:'normal'] [font-variation-settings:normal] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [-webkit-font-smoothing:antialiased] [font-family:Inter,Inter_Placeholder,sans-serif]"
+                    ><br class="box-border [-webkit-font-smoothing:antialiased]"
+                        /></p
+                    ><p class="m-0 p-0 text-left box-border not-italic font-medium normal-case tracking-[0] no-underline leading-[1.6em] [font-size:16px] text-[oklch(51.028%0_none)] [font-feature-settings:'normal'] [font-variation-settings:normal] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [-webkit-font-smoothing:antialiased] [font-family:Inter,Inter_Placeholder,sans-serif]"
+                    > MAPUR I LOVE YOU :)</p
+                    ></div
+                    ></a
+                ></div
+                ><div class="p-0 flex h-min w-full relative box-border gap-[20px] items-center flex-[0_0_auto] overflow-visible [flex-flow:column] place-content-center [-webkit-font-smoothing:antialiased] lg:w-px lg:flex-[1_0_0px]"
+                ><a target="_blank" class="flex h-min w-full relative p-[30px] box-border gap-[20px] opacity-100 items-center no-underline rounded-[20px] flex-[0_0_auto] [transform:none] [flex-flow:column] will-change-transform [place-content:center_flex-start] [-webkit-font-smoothing:antialiased] [background-color:oklch(100%0_none)] shadow-[0_0.796192px_2.38858px_-0.625px_oklch(0%0_none/0.05),0_2.41451px_7.24352px_-1.25px_oklch(0%0_none/0.05),0_6.38265px_19.148px_-1.875px_oklch(0%0_none/0.05),0_20px_60px_-2.5px_oklch(0%0_none/0.05)]"
+                ><div class="p-0 flex h-min w-full relative box-border gap-[15px] items-center flex-[0_0_auto] [flex-flow:row] overflow-hidden [place-content:center_flex-start] [-webkit-font-smoothing:antialiased]"
+                    ><div class="h-auto relative w-[50px] box-border aspect-[1/1] rounded-[50%] flex-[0_0_auto] overflow-hidden will-change-[none] [-webkit-font-smoothing:antialiased]"
+                    ><div class="inset-0 absolute box-border rounded-[inherit] [-webkit-font-smoothing:antialiased]"
+                        ><img decoding="async" loading="lazy" src="" alt="" class="block h-full w-full box-border object-cover rounded-[inherit] object-[center_center] [-webkit-font-smoothing:antialiased]"
+                        /></div
+                        ></div
+                    ><div class="p-0 flex w-px gap-0 h-min relative box-border items-start flex-[1_0_0px] overflow-hidden [flex-flow:column] [place-content:flex-start_center] [-webkit-font-smoothing:antialiased]"
+                    ><div class="flex h-auto w-auto flex-col shrink-0 relative box-border justify-start [outline:none] whitespace-pre flex-[0_0_auto] overflow-visible [transform:none] [-webkit-font-smoothing:antialiased]"
+                        ><h3 class="m-0 p-0 font-bold text-left box-border not-italic normal-case no-underline leading-[1.4em] [font-size:20px] tracking-[-0.8px] text-[oklch(32.109%0_none)] [font-feature-settings:'normal'] [font-variation-settings:normal] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [-webkit-font-smoothing:antialiased] [font-family:Inter,Inter_Placeholder,sans-serif]"
+                        >Anonymous</h3
+                        ></div
+                        ><div class="flex h-auto w-auto flex-col shrink-0 relative box-border justify-start [outline:none] whitespace-pre flex-[0_0_auto] overflow-visible [transform:none] [-webkit-font-smoothing:antialiased]"
+                        ><p class="m-0 p-0 text-left box-border not-italic font-normal normal-case no-underline leading-[1.5em] [font-size:14px] tracking-[-0.7px] text-[oklch(68.295%0_none)] [font-feature-settings:'normal'] [font-variation-settings:normal] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [-webkit-font-smoothing:antialiased] [font-family:Inter,Inter_Placeholder,sans-serif]"
+                        >@-</p
+                        ></div
+                        ></div
+                    ></div
+                    ><div class="flex h-auto w-full flex-col shrink-0 relative box-border break-words justify-start [outline:none] flex-[0_0_auto] overflow-visible [transform:none] whitespace-pre-wrap [word-break:break-word] [-webkit-font-smoothing:antialiased]"
+                    ><p class="m-0 p-0 text-left box-border not-italic font-medium normal-case tracking-[0] no-underline leading-[1.6em] [font-size:16px] text-[oklch(51.028%0_none)] [font-feature-settings:'normal'] [font-variation-settings:normal] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [-webkit-font-smoothing:antialiased] [font-family:Inter,Inter_Placeholder,sans-serif]"
+                    >males ngetik, kasih score aja 11/10. </p
+                    ></div
+                    ></a
+                ><a target="_blank" class="flex h-min w-full relative p-[30px] box-border gap-[20px] opacity-100 items-center no-underline rounded-[20px] flex-[0_0_auto] [transform:none] [flex-flow:column] will-change-transform [place-content:center_flex-start] [-webkit-font-smoothing:antialiased] [background-color:oklch(100%0_none)] shadow-[0_0.796192px_2.38858px_-0.625px_oklch(0%0_none/0.05),0_2.41451px_7.24352px_-1.25px_oklch(0%0_none/0.05),0_6.38265px_19.148px_-1.875px_oklch(0%0_none/0.05),0_20px_60px_-2.5px_oklch(0%0_none/0.05)]"
+                ><div class="p-0 flex h-min w-full relative box-border gap-[15px] items-center flex-[0_0_auto] [flex-flow:row] overflow-hidden [place-content:center_flex-start] [-webkit-font-smoothing:antialiased]"
+                    ><div class="h-auto relative w-[50px] box-border aspect-[1/1] rounded-[50%] flex-[0_0_auto] overflow-hidden will-change-[none] [-webkit-font-smoothing:antialiased]"
+                    ><div class="inset-0 absolute box-border rounded-[inherit] [-webkit-font-smoothing:antialiased]"
+                        ><img decoding="async" loading="lazy" src="" alt="" class="block h-full w-full box-border object-cover rounded-[inherit] object-[center_center] [-webkit-font-smoothing:antialiased]"
+                        /></div
+                        ></div
+                    ><div class="p-0 flex w-px gap-0 h-min relative box-border items-start flex-[1_0_0px] overflow-hidden [flex-flow:column] [place-content:flex-start_center] [-webkit-font-smoothing:antialiased]"
+                    ><div class="flex h-auto w-auto flex-col shrink-0 relative box-border justify-start [outline:none] whitespace-pre flex-[0_0_auto] overflow-visible [transform:none] [-webkit-font-smoothing:antialiased]"
+                        ><h3 class="m-0 p-0 font-bold text-left box-border not-italic normal-case no-underline leading-[1.4em] [font-size:20px] tracking-[-0.8px] text-[oklch(32.109%0_none)] [font-feature-settings:'normal'] [font-variation-settings:normal] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [-webkit-font-smoothing:antialiased] [font-family:Inter,Inter_Placeholder,sans-serif]"
+                        >Anonymous</h3
+                        ></div
+                        ><div class="flex h-auto w-auto flex-col shrink-0 relative box-border justify-start [outline:none] whitespace-pre flex-[0_0_auto] overflow-visible [transform:none] [-webkit-font-smoothing:antialiased]"
+                        ><p class="m-0 p-0 text-left box-border not-italic font-normal normal-case no-underline leading-[1.5em] [font-size:14px] tracking-[-0.7px] text-[oklch(68.295%0_none)] [font-feature-settings:'normal'] [font-variation-settings:normal] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [-webkit-font-smoothing:antialiased] [font-family:Inter,Inter_Placeholder,sans-serif]"
+                        >@-</p
+                        ></div
+                        ></div
+                    ></div
+                    ><div class="flex h-auto w-full flex-col shrink-0 relative box-border break-words justify-start [outline:none] flex-[0_0_auto] overflow-visible [transform:none] whitespace-pre-wrap [word-break:break-word] [-webkit-font-smoothing:antialiased]"
+                    ><p class="m-0 p-0 text-left box-border not-italic font-medium normal-case tracking-[0] no-underline leading-[1.6em] [font-size:16px] text-[oklch(51.028%0_none)] [font-feature-settings:'normal'] [font-variation-settings:normal] [text-wrap:var(--framer-text-wrap)] [-webkit-text-stroke-width:initial] [-webkit-text-stroke-color:initial] [-webkit-font-smoothing:antialiased] [font-family:Inter,Inter_Placeholder,sans-serif]"
+                    >harga paket lokal, kualitas internasional!</p
+                    ></div
+                    ></a
+                ></div
+                ></div
+            ></div
+            ></div
+        ></div
+    ></section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Get In Touch</h2>
+                <p class="text-xl text-gray-600">Ready to plan your dream vacation? We're here to help!</p>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-xl p-8">
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                        <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Destination Interest</label>
+                        <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                            <option>Select a destination</option>
+                            <option>Beach Destinations</option>
+                            <option>Mountain Adventures</option>
+                            <option>Cultural Tours</option>
+                            <option>Safari Experiences</option>
+                            <option>City Breaks</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                        <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="Tell us about your dream vacation..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-indigo-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-indigo-700 transition duration-300">
+                        Send Message
+                    </button>
+                </form>
+                
+                <div class="mt-8 pt-8 border-t border-gray-200">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                        <div>
+                            <div class="text-2xl mb-2">📞</div>
+                            <p class="font-semibold">Call Us</p>
+                            <p class="text-gray-600">+62 896 6930 0203</p>
+                        </div>
+                        <div>
+                            <div class="text-2xl mb-2">✉️</div>
+                            <p class="font-semibold">Email Us</p>
+                            <p class="text-gray-600">bangunjiwaartventuree@gmail.com</p>
+                        </div>
+                        <div>
+                            <div class="text-2xl mb-2">📍</div>
+                            <p class="font-semibold">Visit Us</p>
+                            <p class="text-gray-600">Alamat: Jl. Raja Haji Fisabilillah, Kelurahan No.48, Sei Jang, Kec. Bukit Bestari, Kota Tanjung Pinang, Kepulauan Riau 29124</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-2xl font-bold mb-4">✈️ Bangun Jiwa Artventure</div>
+                    <p class="text-gray-400">Creating unforgettable travel experiences since 2015</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#home" class="hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="#destinations" class="hover:text-white transition duration-300">Destinations</a></li>
+                        <li><a href="#packages" class="hover:text-white transition duration-300">Packages</a></li>
+                        <li><a href="#about" class="hover:text-white transition duration-300">About</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Support</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition duration-300">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Travel Insurance</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Cancellation Policy</a></li>
+                        <li><a href="#contact" class="hover:text-white transition duration-300">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-2xl hover:text-indigo-400 transition duration-300">📘</a>
+                        <a href="#" class="text-2xl hover:text-indigo-400 transition duration-300">📷</a>
+                        <a href="#" class="text-2xl hover:text-indigo-400 transition duration-300">🐦</a>
+                        <a href="#" class="text-2xl hover:text-indigo-400 transition duration-300">📺</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Bangun Jiwa Artventure. All rights reserved. | Privacy Policy | Terms of Service</p>
+                <p class="mt-4">All rights reserved for technical issues and inquiries <a href="mailto:dendilintangpangestu@gmail.com" class="text-indigo-400 hover:underline">dendilintangpangestu@gmail.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+         // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0.2s';
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all sections for animation
+        document.querySelectorAll('section > div, .card-hover').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Search functionality
+        document.querySelector('.search-animation').addEventListener('click', function() {
+            const destination = document.querySelector('input[placeholder="Where do you want to go?"]').value;
+            const date = document.querySelector('input[type="date"]').value;
+            
+            if (destination && date) {
+                alert(`🎉 Great choice! Searching for trips to ${destination} on ${date}. Our travel experts will contact you soon with the best options!`);
+            } else {
+                alert('Please enter both a destination and travel date to search for the perfect trip!');
+            }
+        });
+
+        // Book Now buttons functionality
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent.includes('Book Now')) {
+                button.addEventListener('click', function() {
+                    alert('🌟 Booking initiated! Our travel consultants will contact you within 24 hours to finalize your dream vacation!');
+                });
+            }
+        });
+
+        // Contact form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('✅ Thank you for your message! Our travel experts will get back to you within 24 hours to start planning your perfect adventure!');
+            this.reset();
+        });
+
+        // Destination card clicks
+        document.querySelectorAll('.destination-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const title = this.querySelector('h3').textContent;
+                alert(`🏖️ ${title} looks amazing! Click "Book Now" or contact us to start planning your trip to this incredible destination!`);
+            });
+        });
+
+        // Start Planning button
+        document.querySelector('button:contains("Start Planning")') && 
+        document.querySelector('button').addEventListener('click', function() {
+            if (this.textContent.includes('Start Planning')) {
+                document.querySelector('#contact').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    </script>
+
+    <script>
+        let rentalItems = [];
+        let itemCounter = 0;
+        let selectedSuggestionIndex = -1;
+
+        // Predefined items with their daily prices
+        const itemDatabase = [
+            { name: "Guide/day", price: 300000 },
+            { name: "Homestay (2person)/day", price: 150000 },
+            { name: "Snorkeling Set/day", price: 50000 },
+            { name: "Tukik Release/ekor", price: 30000 },
+            { name: "Pulau Terluar/3hours", price: 300000 },
+            { name: "Breakfast, Lunch, BBQ", price: 100000 },
+            { name: "Eco Drawing/person", price: 100000 },
+            { name: "Kapal Besar 20person PP", price: 2000000 },
+            { name: "Kapal Kecil 6person PP", price: 1000000 },
+            { name: "Camp Site (Per Pax)/2days", price: 1500000 },
+            { name: "Rock Climbing (per pax)/2days", price: 2000000 },
+            { name: "Motorcycle/day", price: 100000 },
+            { name: "Tent", price: 180000 },
+            { name: "Camping Chair", price: 75000 },
+            { name: "Cooler", price: 120000 },
+            { name: "Power Tools", price: 375000 },
+            { name: "Ladder", price: 150000 },
+            { name: "Pressure Washer", price: 270000 },
+            { name: "Generator", price: 675000 },
+            { name: "Karaoke Machine", price: 300000 }
+        ];
+
+        function showSuggestions(input) {
+            const suggestionsDiv = document.getElementById('suggestions');
+            
+            if (input.length === 0) {
+                suggestionsDiv.classList.add('hidden');
+                return;
+            }
+
+            const filteredItems = itemDatabase.filter(item => 
+                item.name.toLowerCase().includes(input.toLowerCase())
+            );
+
+            if (filteredItems.length === 0) {
+                suggestionsDiv.classList.add('hidden');
+                return;
+            }
+
+            suggestionsDiv.innerHTML = filteredItems.map((item, index) => `
+                <div class="px-4 py-3 hover:bg-blue-50 cursor-pointer border-b border-gray-100 last:border-b-0 flex justify-between items-center"
+                     onmousedown="selectItem('${item.name}', ${item.price})"
+                     onmouseenter="selectedSuggestionIndex = ${index}">
+                    <span class="font-medium text-gray-700 text-sm">${item.name}</span>
+                    <span class="text-green-600 font-semibold text-sm">Rp${item.price.toLocaleString('id-ID')}/day</span>
+                </div>
+            `).join('');
+
+            suggestionsDiv.classList.remove('hidden');
+            selectedSuggestionIndex = -1;
+        }
+
+        function hideSuggestions() {
+            setTimeout(() => {
+                document.getElementById('suggestions').classList.add('hidden');
+            }, 150);
+        }
+
+        function selectItem(name, price) {
+            document.getElementById('itemName').value = name;
+            document.getElementById('dailyPrice').value = price;
+            document.getElementById('suggestions').classList.add('hidden');
+            document.getElementById('rentalDays').focus();
+        }
+
+        function handleKeyDown(event) {
+            const suggestionsDiv = document.getElementById('suggestions');
+            const suggestions = suggestionsDiv.querySelectorAll('div');
+            
+            if (suggestionsDiv.classList.contains('hidden') || suggestions.length === 0) {
+                return;
+            }
+
+            if (event.key === 'ArrowDown') {
+                event.preventDefault();
+                selectedSuggestionIndex = Math.min(selectedSuggestionIndex + 1, suggestions.length - 1);
+                updateSelectedSuggestion(suggestions);
+            } else if (event.key === 'ArrowUp') {
+                event.preventDefault();
+                selectedSuggestionIndex = Math.max(selectedSuggestionIndex - 1, 0);
+                updateSelectedSuggestion(suggestions);
+            } else if (event.key === 'Enter' && selectedSuggestionIndex >= 0) {
+                event.preventDefault();
+                const selectedItem = itemDatabase.filter(item => 
+                    item.name.toLowerCase().includes(document.getElementById('itemName').value.toLowerCase())
+                )[selectedSuggestionIndex];
+                if (selectedItem) {
+                    selectItem(selectedItem.name, selectedItem.price);
+                }
+            } else if (event.key === 'Escape') {
+                suggestionsDiv.classList.add('hidden');
+                selectedSuggestionIndex = -1;
+            }
+        }
+
+        function updateSelectedSuggestion(suggestions) {
+            suggestions.forEach((suggestion, index) => {
+                if (index === selectedSuggestionIndex) {
+                    suggestion.classList.add('bg-blue-50');
+                } else {
+                    suggestion.classList.remove('bg-blue-50');
+                }
+            });
+        }
+
+        function addItem() {
+            const itemName = document.getElementById('itemName').value.trim();
+            const dailyPrice = parseFloat(document.getElementById('dailyPrice').value);
+            const rentalDays = parseInt(document.getElementById('rentalDays').value);
+
+            // Validation
+            if (!itemName) {
+                alert('Please enter an item name');
+                return;
+            }
+            if (!dailyPrice || dailyPrice <= 0) {
+                alert('Please enter a valid daily price');
+                return;
+            }
+            if (!rentalDays || rentalDays <= 0) {
+                alert('Please enter valid rental days');
+                return;
+            }
+
+            // Create new item
+            const newItem = {
+                id: ++itemCounter,
+                name: itemName,
+                dailyPrice: dailyPrice,
+                days: rentalDays,
+                total: dailyPrice * rentalDays
+            };
+
+            rentalItems.push(newItem);
+            updateTable();
+            clearForm();
+        }
+
+        function removeItem(id) {
+            rentalItems = rentalItems.filter(item => item.id !== id);
+            updateTable();
+        }
+
+        function updateDays(id, newDays) {
+            const item = rentalItems.find(item => item.id === id);
+            if (item && newDays > 0) {
+                item.days = newDays;
+                item.total = item.dailyPrice * newDays;
+                updateTable();
+            }
+        }
+
+        function updateTable() {
+            const tableBody = document.getElementById('rentalTableBody');
+            const emptyState = document.getElementById('emptyState');
+            const totalSummary = document.getElementById('totalSummary');
+
+            if (rentalItems.length === 0) {
+                tableBody.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                totalSummary.classList.add('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            totalSummary.classList.remove('hidden');
+
+            tableBody.innerHTML = rentalItems.map(item => `
+                <tr class="border-b border-gray-100 hover:bg-gray-50">
+                    <td class="px-6 py-4 text-gray-800 font-medium">${item.name}</td>
+                    <td class="px-6 py-4 text-center text-gray-600">Rp${item.dailyPrice.toLocaleString('id-ID')}</td>
+                    <td class="px-6 py-4 text-center">
+                        <input type="number" value="${item.days}" min="1" 
+                               onchange="updateDays(${item.id}, parseInt(this.value))"
+                               class="w-20 px-2 py-1 text-center border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </td>
+                    <td class="px-6 py-4 text-center font-semibold text-green-600">Rp${item.total.toLocaleString('id-ID')}</td>
+                    <td class="px-6 py-4 text-center">
+                        <button onclick="removeItem(${item.id})" 
+                                class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition duration-200">
+                            Remove
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+
+            // Update totals
+            const grandTotal = rentalItems.reduce((sum, item) => sum + item.total, 0);
+            document.getElementById('grandTotal').textContent = `Rp${grandTotal.toLocaleString('id-ID')}`;
+            document.getElementById('totalItems').textContent = rentalItems.length;
+        }
+
+        function clearForm() {
+            document.getElementById('itemName').value = '';
+            document.getElementById('dailyPrice').value = '';
+            document.getElementById('rentalDays').value = '1';
+        }
+
+        // Initialize
+        updateTable();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'963c09057293fce0',t:'MTc1MzI4MjY5OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
